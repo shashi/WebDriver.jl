@@ -27,7 +27,7 @@ maybe_splat(x) =
     if startswith(x, "**")
         "; $(x[3:end])..."
     elseif startswith(x, "*")
-        "$(x[3:end])..."
+        "$(x[2:end])..."
     else
         x
     end
@@ -90,17 +90,21 @@ driver = wd.PhantomJS("phantomjs")
 
 driver[:get]("http://selenium-python.readthedocs.io/api.html")
 
-remote_section =
-    driver[:find_element_by_id]("module-selenium.webdriver.remote.webdriver")
+
+### Driver
 
 function wrap_elem(fn, expr)
     if startswith(fn, "find_elements")
-        expr = "map(WebElement, $expr)"
+        "map(WebElement, $expr)"
     elseif startswith(fn, "find_element")
-        expr = "WebElement($expr)"
+        "WebElement($expr)"
+    else
+        expr
     end
 end
 
+remote_section =
+    driver[:find_element_by_id]("module-selenium.webdriver.remote.webdriver")
 
 code *= gen_wrapper(:Driver, :driver, remote_section, jl_wrap=wrap_elem)
 

@@ -8,41 +8,41 @@ optional keys - "path", "domain", "secure", "expiry"
 Usage:
 driver.add_cookie({"name" : "foo", "value" : "bar"}) driver.add_cookie({"name" : "foo", "value" : "bar", "path" : "/"}) driver.add_cookie({"name" : "foo", "value" : "bar", "path" : "/", "secure":True})
 """
-add_cookie(driver::Driver, cookie_dict) = nothing
+add_cookie(driver::Driver, cookie_dict) = driver.o[:add_cookie](cookie_dict)
 
 
 """
 Goes one step backward in the browser history.
 Usage: driver.back()
 """
-back(driver::Driver, ) = nothing
+back(driver::Driver, ) = driver.o[:back]()
 
 
 """
 Closes the current window.
 Usage: driver.close()
 """
-close(driver::Driver, ) = nothing
+close(driver::Driver, ) = driver.o[:close]()
 
 
 """
 Creates a web element with the specified element_id.
 """
-create_web_element(driver::Driver, element_id) = nothing
+create_web_element(driver::Driver, element_id) = driver.o[:create_web_element](element_id)
 
 
 """
 Delete all cookies in the scope of the session.
 Usage: driver.delete_all_cookies()
 """
-delete_all_cookies(driver::Driver, ) = nothing
+delete_all_cookies(driver::Driver, ) = driver.o[:delete_all_cookies]()
 
 
 """
 Deletes a single cookie with the given name.
 Usage: driver.delete_cookie("my_cookie")
 """
-delete_cookie(driver::Driver, name) = nothing
+delete_cookie(driver::Driver, name) = driver.o[:delete_cookie](name)
 
 
 """
@@ -53,7 +53,7 @@ params: A dictionary of named parameters to send with the command.
 Returns:
 The command"s JSON response loaded into a dictionary object.
 """
-execute(driver::Driver, driver_command, params = nothing) = nothing
+execute(driver::Driver, driver_command, params = nothing) = driver.o[:execute](driver_command, params)
 
 
 """
@@ -64,7 +64,7 @@ script: The JavaScript to execute.
 Usage:
 driver.execute_async_script("document.title")
 """
-execute_async_script(driver::Driver, script, rgs...) = nothing
+execute_async_script(driver::Driver, script, args...) = driver.o[:execute_async_script](script, args...)
 
 
 """
@@ -75,7 +75,7 @@ script: The JavaScript to execute.
 Usage:
 driver.execute_script("document.title")
 """
-execute_script(driver::Driver, script, rgs...) = nothing
+execute_script(driver::Driver, script, args...) = driver.o[:execute_script](script, args...)
 
 
 """
@@ -90,7 +90,7 @@ args - Optional arguments that get passed to the file detector class during
 instantiation.
 kwargs - Keyword arguments, passed the same way as args.
 """
-file_detector_context(driver::Driver, rgs..., ; kwds...) = nothing
+file_detector_context(driver::Driver, args..., ; kwds...) = driver.o[:file_detector_context](args..., ; kwds...)
 
 
 """
@@ -273,27 +273,27 @@ find_elements_by_xpath(driver::Driver, xpath) = map(WebElement, driver.o[:find_e
 Goes one step forward in the browser history.
 Usage: driver.forward()
 """
-forward(driver::Driver, ) = nothing
+forward(driver::Driver, ) = driver.o[:forward]()
 
 
 """
 Loads a web page in the current browser session.
 """
-get(driver::Driver, url) = nothing
+get(driver::Driver, url) = driver.o[:get](url)
 
 
 """
 Get a single cookie by name. Returns the cookie if found, None if not.
 Usage: driver.get_cookie("my_cookie")
 """
-get_cookie(driver::Driver, name) = nothing
+get_cookie(driver::Driver, name) = driver.o[:get_cookie](name)
 
 
 """
 Returns a set of dictionaries, corresponding to cookies visible in the current session.
 Usage: driver.get_cookies()
 """
-get_cookies(driver::Driver, ) = nothing
+get_cookies(driver::Driver, ) = driver.o[:get_cookies]()
 
 
 """
@@ -303,7 +303,7 @@ log_type: type of log that which will be returned
 Usage:
 driver.get_log("browser") driver.get_log("driver") driver.get_log("client") driver.get_log("server")
 """
-get_log(driver::Driver, log_type) = nothing
+get_log(driver::Driver, log_type) = driver.o[:get_log](log_type)
 
 
 """
@@ -311,7 +311,7 @@ Gets the screenshot of the current window as a base64 encoded string
 which is useful in embedded images in HTML.
 Usage: driver.get_screenshot_as_base64()
 """
-get_screenshot_as_base64(driver::Driver, ) = nothing
+get_screenshot_as_base64(driver::Driver, ) = driver.o[:get_screenshot_as_base64]()
 
 
 """
@@ -322,28 +322,28 @@ filename: The full path you wish to save your screenshot to.
 Usage:
 driver.get_screenshot_as_file("/Screenshots/foo.png")
 """
-get_screenshot_as_file(driver::Driver, filename) = nothing
+get_screenshot_as_file(driver::Driver, filename) = driver.o[:get_screenshot_as_file](filename)
 
 
 """
 Gets the screenshot of the current window as a binary data.
 Usage: driver.get_screenshot_as_png()
 """
-get_screenshot_as_png(driver::Driver, ) = nothing
+get_screenshot_as_png(driver::Driver, ) = driver.o[:get_screenshot_as_png]()
 
 
 """
 Gets the x,y position of the current window.
 Usage: driver.get_window_position()
 """
-get_window_position(driver::Driver, windowHandle = "current") = nothing
+get_window_position(driver::Driver, windowHandle = "current") = driver.o[:get_window_position](windowHandle)
 
 
 """
 Gets the width and height of the current window.
 Usage: driver.get_window_size()
 """
-get_window_size(driver::Driver, windowHandle = "current") = nothing
+get_window_size(driver::Driver, windowHandle = "current") = driver.o[:get_window_size](windowHandle)
 
 
 """
@@ -354,27 +354,27 @@ time_to_wait: Amount of time to wait (in seconds)
 Usage:
 driver.implicitly_wait(30)
 """
-implicitly_wait(driver::Driver, time_to_wait) = nothing
+implicitly_wait(driver::Driver, time_to_wait) = driver.o[:implicitly_wait](time_to_wait)
 
 
 """
 Maximizes the current window that webdriver is using
 """
-maximize_window(driver::Driver, ) = nothing
+maximize_window(driver::Driver, ) = driver.o[:maximize_window]()
 
 
 """
 Quits the driver and closes every associated window.
 Usage: driver.quit()
 """
-quit(driver::Driver, ) = nothing
+quit(driver::Driver, ) = driver.o[:quit]()
 
 
 """
 Refreshes the current page.
 Usage: driver.refresh()
 """
-refresh(driver::Driver, ) = nothing
+refresh(driver::Driver, ) = driver.o[:refresh]()
 
 
 """
@@ -385,7 +385,7 @@ filename: The full path you wish to save your screenshot to.
 Usage:
 driver.get_screenshot_as_file("/Screenshots/foo.png")
 """
-save_screenshot(driver::Driver, filename) = nothing
+save_screenshot(driver::Driver, filename) = driver.o[:save_screenshot](filename)
 
 
 """
@@ -396,7 +396,7 @@ time_to_wait: The amount of time to wait
 Usage:
 driver.set_page_load_timeout(30)
 """
-set_page_load_timeout(driver::Driver, time_to_wait) = nothing
+set_page_load_timeout(driver::Driver, time_to_wait) = driver.o[:set_page_load_timeout](time_to_wait)
 
 
 """
@@ -407,7 +407,7 @@ time_to_wait: The amount of time to wait (in seconds)
 Usage:
 driver.set_script_timeout(30)
 """
-set_script_timeout(driver::Driver, time_to_wait) = nothing
+set_script_timeout(driver::Driver, time_to_wait) = driver.o[:set_script_timeout](time_to_wait)
 
 
 """
@@ -418,7 +418,7 @@ y: the y-coordinate in pixels to set the window position
 Usage:
 driver.set_window_position(0,0)
 """
-set_window_position(driver::Driver, x, y, windowHandle = "current") = nothing
+set_window_position(driver::Driver, x, y, windowHandle = "current") = driver.o[:set_window_position](x, y, windowHandle)
 
 
 """
@@ -429,13 +429,13 @@ height: the height in pixels to set the window to
 Usage:
 driver.set_window_size(800,600)
 """
-set_window_size(driver::Driver, width, height, windowHandle = "current") = nothing
+set_window_size(driver::Driver, width, height, windowHandle = "current") = driver.o[:set_window_size](width, height, windowHandle)
 
 
 """
 Called before starting a new session. This method may be overridden to define custom startup behavior.
 """
-start_client(driver::Driver, ) = nothing
+start_client(driver::Driver, ) = driver.o[:start_client]()
 
 
 """
@@ -447,88 +447,88 @@ platform - Which platform to request the browser on.
 javascript_enabled - Whether the new session should support JavaScript.
 browser_profile - A selenium.webdriver.firefox.firefox_profile.FirefoxProfile object. Only used if Firefox is requested.
 """
-start_session(driver::Driver, desired_capabilities, browser_profile = nothing) = nothing
+start_session(driver::Driver, desired_capabilities, browser_profile = nothing) = driver.o[:start_session](desired_capabilities, browser_profile)
 
 
 """
 Called after executing a quit command. This method may be overridden to define custom shutdown behavior.
 """
-stop_client(driver::Driver, ) = nothing
+stop_client(driver::Driver, ) = driver.o[:stop_client]()
 
 
 """
 Deprecated use driver.switch_to.active_element
 """
-switch_to_active_element(driver::Driver, ) = nothing
+switch_to_active_element(driver::Driver, ) = driver.o[:switch_to_active_element]()
 
 
 """
 Deprecated use driver.switch_to.alert
 """
-switch_to_alert(driver::Driver, ) = nothing
+switch_to_alert(driver::Driver, ) = driver.o[:switch_to_alert]()
 
 
 """
 Deprecated use driver.switch_to.default_content
 """
-switch_to_default_content(driver::Driver, ) = nothing
+switch_to_default_content(driver::Driver, ) = driver.o[:switch_to_default_content]()
 
 
 """
 Deprecated use driver.switch_to.frame
 """
-switch_to_frame(driver::Driver, frame_reference) = nothing
+switch_to_frame(driver::Driver, frame_reference) = driver.o[:switch_to_frame](frame_reference)
 
 
 """
 Deprecated use driver.switch_to.window
 """
-switch_to_window(driver::Driver, window_name) = nothing
+switch_to_window(driver::Driver, window_name) = driver.o[:switch_to_window](window_name)
 
 
 """
 Returns a ApplicationCache Object to interact with the browser app cache
 """
-application_cache(driver::Driver, ) = nothing
+application_cache(driver::Driver, ) = driver.o[:application_cache]
 
 
 """
 Gets the URL of the current page.
 Usage: driver.current_url
 """
-current_url(driver::Driver, ) = nothing
+current_url(driver::Driver, ) = driver.o[:current_url]
 
 
 """
 Returns the handle of the current window.
 Usage: driver.current_window_handle
 """
-current_window_handle(driver::Driver, ) = nothing
+current_window_handle(driver::Driver, ) = driver.o[:current_window_handle]
 
 
 """
 returns the drivers current desired capabilities being used
 """
-desired_capabilities(driver::Driver, ) = nothing
+desired_capabilities(driver::Driver, ) = driver.o[:desired_capabilities]
 
 
 """
 
 """
-file_detector(driver::Driver, ) = nothing
+file_detector(driver::Driver, ) = driver.o[:file_detector]
 
 
 """
 Gets a list of the available log types
 Usage: driver.log_types
 """
-log_types(driver::Driver, ) = nothing
+log_types(driver::Driver, ) = driver.o[:log_types]
 
 
 """
 
 """
-mobile(driver::Driver, ) = nothing
+mobile(driver::Driver, ) = driver.o[:mobile]
 
 
 """
@@ -536,41 +536,41 @@ Returns the name of the underlying browser for this instance.
 Usage:
 driver.name
 """
-name(driver::Driver, ) = nothing
+name(driver::Driver, ) = driver.o[:name]
 
 
 """
 Gets the current orientation of the device
 Usage: orientation = driver.orientation
 """
-orientation(driver::Driver, ) = nothing
+orientation(driver::Driver, ) = driver.o[:orientation]
 
 
 """
 Gets the source of the current page.
 Usage: driver.page_source
 """
-page_source(driver::Driver, ) = nothing
+page_source(driver::Driver, ) = driver.o[:page_source]
 
 
 """
 
 """
-switch_to(driver::Driver, ) = nothing
+switch_to(driver::Driver, ) = driver.o[:switch_to]
 
 
 """
 Returns the title of the current page.
 Usage: driver.title
 """
-title(driver::Driver, ) = nothing
+title(driver::Driver, ) = driver.o[:title]
 
 
 """
 Returns the handles of all windows within the current session.
 Usage: driver.window_handles
 """
-window_handles(driver::Driver, ) = nothing
+window_handles(driver::Driver, ) = driver.o[:window_handles]
 export clear,click,find_element,find_element_by_class_name,find_element_by_css_selector,find_element_by_id,find_element_by_link_text,find_element_by_name,find_element_by_partial_link_text,find_element_by_tag_name,find_element_by_xpath,find_elements,find_elements_by_class_name,find_elements_by_css_selector,find_elements_by_id,find_elements_by_link_text,find_elements_by_name,find_elements_by_partial_link_text,find_elements_by_tag_name,find_elements_by_xpath,get_attribute,is_displayed,is_enabled,is_selected,screenshot,send_keys,submit,value_of_css_property,id,location,location_once_scrolled_into_view,parent,rect,screenshot_as_base64,screenshot_as_png,size,tag_name,text
 
 """
@@ -792,7 +792,7 @@ file_input.send_keys("path/to/profilepic.gif")
 # in os.path to return the actual path to support cross OS testing.
 # file_input.send_keys(os.path.abspath("path/to/profilepic.gif"))
 """
-send_keys(elem::WebElement, alue...) = elem.o[:send_keys](alue...)
+send_keys(elem::WebElement, value...) = elem.o[:send_keys](value...)
 
 
 """
@@ -1023,9 +1023,9 @@ Args:
 keys_to_send: The keys to send. Modifier keys constants can be found in the
 "Keys" class.
 """
-send_keys(chain::ActionChain, eys_to_send...) = ActionChain(chain.o[:send_keys](eys_to_send...))
+send_keys(chain::ActionChain, keys_to_send...) = ActionChain(chain.o[:send_keys](keys_to_send...))
 
-send_keys(eys_to_send...) = chain -> ActionChain(chain.o[:send_keys](eys_to_send...))
+send_keys(keys_to_send...) = chain -> ActionChain(chain.o[:send_keys](keys_to_send...))
 
 
 """
@@ -1035,7 +1035,7 @@ element: The element to send keys.
 keys_to_send: The keys to send. Modifier keys constants can be found in the
 "Keys" class.
 """
-send_keys_to_element(chain::ActionChain, element, eys_to_send...) = ActionChain(chain.o[:send_keys_to_element](element, eys_to_send...))
+send_keys_to_element(chain::ActionChain, element, keys_to_send...) = ActionChain(chain.o[:send_keys_to_element](element, keys_to_send...))
 
-send_keys_to_element(element, eys_to_send...) = chain -> ActionChain(chain.o[:send_keys_to_element](element, eys_to_send...))
+send_keys_to_element(element, keys_to_send...) = chain -> ActionChain(chain.o[:send_keys_to_element](element, keys_to_send...))
 
