@@ -132,4 +132,29 @@ end
 
 code *= gen_wrapper(:ActionChain, :chain, action_chain_section; jl_wrap=chain_wrapper, curry=true)
 
+
+### Special keys
+
+keys_section =
+    driver[:find_element_by_id]("module-selenium.webdriver.common.keys")
+
+consts = map(findall(keys_section, ".attribute")) do k
+    find(k, ".descname")[:text]
+end
+
+exports = "export " * join(consts, ",")
+
+constdefs = join(["const $x = ks.Keys[:$x]" for x in consts], "\n")
+code *= """
+export Keys
+module Keys
+using PyCall
+
+$exports
+
+@pyimport selenium.webdriver.common.keys as ks
+$constdefs
+end
+"""
+
 println(code)
