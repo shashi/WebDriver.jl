@@ -114,7 +114,7 @@ code *= gen_wrapper(:Driver, :driver, remote_section, jl_wrap=wrap_elem)
 webel_section =
     driver[:find_element_by_id]("module-selenium.webdriver.remote.webelement")
 
-code *= gen_wrapper(:WebElement, :elem, webel_section)
+code *= gen_wrapper(:WebElement, :elem, webel_section; jl_wrap=wrap_elem)
 
 
 #### Action chains

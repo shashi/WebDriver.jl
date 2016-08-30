@@ -18,7 +18,9 @@ end
 PyObject(x::WebElement) = x.o
 
 
-init_phantom(args...) = Driver(wd.PhantomJS(args...))
+export init_phantomjs, init_firefox, init_chrome, init_ie
+
+init_phantomjs(args...) = Driver(wd.PhantomJS(args...))
 init_firefox(args...) = Driver(wd.Firefox(args...))
 init_chrome(args...) = Driver(wd.Chrome(args...))
 init_ie(args...) = Driver(wd.Ie(args...))

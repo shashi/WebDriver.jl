@@ -588,7 +588,7 @@ click(elem::WebElement, ) = elem.o[:click]()
 """
 
 """
-find_element(elem::WebElement, by = "id", value = nothing) = elem.o[:find_element](by, value)
+find_element(elem::WebElement, by = "id", value = nothing) = WebElement(elem.o[:find_element](by, value))
 
 
 """
@@ -596,7 +596,7 @@ Finds element within this element"s children by class name.
 Args:
 name - class name to search for.
 """
-find_element_by_class_name(elem::WebElement, name) = elem.o[:find_element_by_class_name](name)
+find_element_by_class_name(elem::WebElement, name) = WebElement(elem.o[:find_element_by_class_name](name))
 
 
 """
@@ -604,7 +604,7 @@ Finds element within this element"s children by CSS selector.
 Args:
 css_selector - CSS selctor string, ex: "a.nav#home"
 """
-find_element_by_css_selector(elem::WebElement, css_selector) = elem.o[:find_element_by_css_selector](css_selector)
+find_element_by_css_selector(elem::WebElement, css_selector) = WebElement(elem.o[:find_element_by_css_selector](css_selector))
 
 
 """
@@ -612,7 +612,7 @@ Finds element within this element"s children by ID.
 Args:
 id_ - ID of child element to locate.
 """
-find_element_by_id(elem::WebElement, id_) = elem.o[:find_element_by_id](id_)
+find_element_by_id(elem::WebElement, id_) = WebElement(elem.o[:find_element_by_id](id_))
 
 
 """
@@ -620,7 +620,7 @@ Finds element within this element"s children by visible link text.
 Args:
 link_text - Link text string to search for.
 """
-find_element_by_link_text(elem::WebElement, link_text) = elem.o[:find_element_by_link_text](link_text)
+find_element_by_link_text(elem::WebElement, link_text) = WebElement(elem.o[:find_element_by_link_text](link_text))
 
 
 """
@@ -628,7 +628,7 @@ Finds element within this element"s children by name.
 Args:
 name - name property of the element to find.
 """
-find_element_by_name(elem::WebElement, name) = elem.o[:find_element_by_name](name)
+find_element_by_name(elem::WebElement, name) = WebElement(elem.o[:find_element_by_name](name))
 
 
 """
@@ -636,7 +636,7 @@ Finds element within this element"s children by partially visible link text.
 Args:
 link_text - Link text string to search for.
 """
-find_element_by_partial_link_text(elem::WebElement, link_text) = elem.o[:find_element_by_partial_link_text](link_text)
+find_element_by_partial_link_text(elem::WebElement, link_text) = WebElement(elem.o[:find_element_by_partial_link_text](link_text))
 
 
 """
@@ -644,7 +644,7 @@ Finds element within this element"s children by tag name.
 Args:
 name - name of html tag (eg: h1, a, span)
 """
-find_element_by_tag_name(elem::WebElement, name) = elem.o[:find_element_by_tag_name](name)
+find_element_by_tag_name(elem::WebElement, name) = WebElement(elem.o[:find_element_by_tag_name](name))
 
 
 """
@@ -656,13 +656,13 @@ myelement.find_elements_by_xpath(".//a")
 However, this will select the first link on the page.
 myelement.find_elements_by_xpath("//a")
 """
-find_element_by_xpath(elem::WebElement, xpath) = elem.o[:find_element_by_xpath](xpath)
+find_element_by_xpath(elem::WebElement, xpath) = WebElement(elem.o[:find_element_by_xpath](xpath))
 
 
 """
 
 """
-find_elements(elem::WebElement, by = "id", value = nothing) = elem.o[:find_elements](by, value)
+find_elements(elem::WebElement, by = "id", value = nothing) = map(WebElement, elem.o[:find_elements](by, value))
 
 
 """
@@ -670,7 +670,7 @@ Finds a list of elements within this element"s children by class name.
 Args:
 name - class name to search for.
 """
-find_elements_by_class_name(elem::WebElement, name) = elem.o[:find_elements_by_class_name](name)
+find_elements_by_class_name(elem::WebElement, name) = map(WebElement, elem.o[:find_elements_by_class_name](name))
 
 
 """
@@ -678,7 +678,7 @@ Finds a list of elements within this element"s children by CSS selector.
 Args:
 css_selector - CSS selctor string, ex: "a.nav#home"
 """
-find_elements_by_css_selector(elem::WebElement, css_selector) = elem.o[:find_elements_by_css_selector](css_selector)
+find_elements_by_css_selector(elem::WebElement, css_selector) = map(WebElement, elem.o[:find_elements_by_css_selector](css_selector))
 
 
 """
@@ -686,7 +686,7 @@ Finds a list of elements within this element"s children by ID.
 Args:
 id_ - Id of child element to find.
 """
-find_elements_by_id(elem::WebElement, id_) = elem.o[:find_elements_by_id](id_)
+find_elements_by_id(elem::WebElement, id_) = map(WebElement, elem.o[:find_elements_by_id](id_))
 
 
 """
@@ -694,7 +694,7 @@ Finds a list of elements within this element"s children by visible link text.
 Args:
 link_text - Link text string to search for.
 """
-find_elements_by_link_text(elem::WebElement, link_text) = elem.o[:find_elements_by_link_text](link_text)
+find_elements_by_link_text(elem::WebElement, link_text) = map(WebElement, elem.o[:find_elements_by_link_text](link_text))
 
 
 """
@@ -702,7 +702,7 @@ Finds a list of elements within this element"s children by name.
 Args:
 name - name property to search for.
 """
-find_elements_by_name(elem::WebElement, name) = elem.o[:find_elements_by_name](name)
+find_elements_by_name(elem::WebElement, name) = map(WebElement, elem.o[:find_elements_by_name](name))
 
 
 """
@@ -710,7 +710,7 @@ Finds a list of elements within this element"s children by link text.
 Args:
 link_text - Link text string to search for.
 """
-find_elements_by_partial_link_text(elem::WebElement, link_text) = elem.o[:find_elements_by_partial_link_text](link_text)
+find_elements_by_partial_link_text(elem::WebElement, link_text) = map(WebElement, elem.o[:find_elements_by_partial_link_text](link_text))
 
 
 """
@@ -718,7 +718,7 @@ Finds a list of elements within this element"s children by tag name.
 Args:
 name - name of html tag (eg: h1, a, span)
 """
-find_elements_by_tag_name(elem::WebElement, name) = elem.o[:find_elements_by_tag_name](name)
+find_elements_by_tag_name(elem::WebElement, name) = map(WebElement, elem.o[:find_elements_by_tag_name](name))
 
 
 """
@@ -731,7 +731,7 @@ myelement.find_elements_by_xpath(".//a")
 However, this will select all links in the page itself.
 myelement.find_elements_by_xpath("//a")
 """
-find_elements_by_xpath(elem::WebElement, xpath) = elem.o[:find_elements_by_xpath](xpath)
+find_elements_by_xpath(elem::WebElement, xpath) = map(WebElement, elem.o[:find_elements_by_xpath](xpath))
 
 
 """
