@@ -1,5 +1,10 @@
 module WebDriver
 
-# package code goes here
+using PyCall
+
+import Base: size
+
+include("defs.jl")
+include("generated.jl")
 
 end # module
