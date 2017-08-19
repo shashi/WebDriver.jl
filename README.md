@@ -11,6 +11,12 @@ This wrapper is auto-generated from the [API documentation page](http://selenium
 - you will need to set up ChromeDriver to use the google chrome for running web driver
 - a good backend to use to run the web driver is [PhantomJS]()
 - if you have firefox already installed, you should be able to use the Firefox backend. See below to learn how to use different backends to run webdriver scripts.
+- Clone this repository into "~/.julia/v0.6/"; replace 0.6 with the appropriate version number
+- Rename the clone repository into WebDriver (from WebDriver.jl)
+
+```julia
+Pkg.add("PyCall") # to make Python calls
+```
 
 ## Usage
 
